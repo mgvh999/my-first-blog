@@ -1,3 +1,4 @@
+"""
 from django.http import HttpResponse,Http404
 import datetime
 
@@ -20,3 +21,4 @@ def hours_ahead(request, offset):
     dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
     html = "In %s hours it will be %s." %(offset, dt)
     return HttpResponse(html)
+"""

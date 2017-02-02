@@ -15,3 +15,5 @@ class Post(models.Model):
 
     def __str__(self):#dunder = "double underscore"
         return self.title
+
+    
