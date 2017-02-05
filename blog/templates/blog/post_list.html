@@ -4,20 +4,17 @@
         <title> Animales Siendo Pesaos</title>
     </head>
     <body>
-        <p>Hola! Aqui hay unos links de animales siendo pesaos!</p>
-            <ul>
-                <li>
-                    <a href="http://i.imgur.com/bSrmL3h.gifv"> "Este gato se mojo!"</a>
-                </li>
-                <li>
-                    <a href="https://i.reddituploads.com/9c6c9933ed56404db2595aab98e9e55d?fit=max&h=1536&w=1536&s=ffbda39a212ba610e761d23b2ac16cad">"Aqui me siento No mas Lucho"
-                    </a>
-                </li>
-                <li>
-                    <a href="http://imgur.com/a/G5ITd">
-                        "Hey, You tbn me siento Aqui"
-                    </a> 
-                </li>
-
+        <div>
+            <h1><a href="/">Animales Siendo pesaos</a></h1>
+        </div>
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    </body>
+        
     </body>
 </html>
