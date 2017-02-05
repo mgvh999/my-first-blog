@@ -6,3 +6,4 @@ db.sqlite2
 db.sqlite3
 /static
 .DS_Store
+##db.sqlite3
