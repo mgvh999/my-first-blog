@@ -13,26 +13,17 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-current_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.join(current_directory, os.path.pardir)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-from django.core.exceptions import ImproperlyConfigured
- 
-def get_env_variable(var_name):
-    try:
-        return os.environ[var_name]
-    except KeyError:
-        error_msg = "Set the %s environment variable" % var_name
-        raise ImproperlyConfigured(error_msg)
- 
-SECRET_KEY = get_env_variable('SECRET_KEY')
+SECRET_KEY = '3gs9^itl)3zh!puhgyo8ui8w6d0i%0c#hvf2hc!=4ah5e#5uo2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
+DEBUG = True
 
 ALLOWED_HOSTS = ['mgvh999.pythonanywhere.com']
 
