@@ -12,4 +12,7 @@ urlpatterns = [
     url(r'^post/(?P<pk>\d+)/edit/$', views.post_edit, name='post_edit'),
     url(r'^drafts/$', views.post_draft_list, name='post_draft_list'),
     url(r'^post/publish/(?P<pk>\d+)/$', views.post_publish, name='post_publish'),
+    url(r'^upload/complete/$', views.direct_upload_complete),
+    url(r'^post/new/image/$', views.post_new_image, name='post_new_image')
+
 ]

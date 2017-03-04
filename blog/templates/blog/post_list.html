@@ -1,13 +1,15 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+    <div id='posts'>
         {% for post in posts %}
-            <div class='post'>
             <div class="date">
                     <p>published: {{ post.published_date }}</p>
-                </div>
+            </div>
+            <div class="post">
+                
                 {% if post.image %}
-                    <div class="image">
+                    <p class="hasImg">
                         <img src="{{ post.image.url }}">
                     </div>
                 {% endif %}

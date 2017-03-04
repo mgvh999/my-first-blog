@@ -1,8 +1,42 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-    <h1>New Post</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+    <div id="direct_upload">
+        <h1>New Text Post</h1>
+        <form  action="{% url 'blog.views.post_new' %}" method="POST" class="post-new-image">
+            {% csrf_token %}
+            {{ backend_form }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+        <div class = "uploaded_info_holder">
+        <div>
+
+    </div>
+    =====================================================
+    
+{% endblock %}
+{% block javascript %}
+    $('#direct_uploaf input[type="file"]').cloudinary_fileupload({
+        dropZone: '#direct_upload',
+        start: function () {
+            $('.status_value').text('Starting direct upload...');
+      },
+      progress: function () {
+        $('.status_value').text('Uploading...');
+        },
+    })
+    .on('cloudinarydone', function (e, data) {
+        $('.status_value').text('Updating backend...');
+        $.POST(this.form.action, $(this.form).serialize()).always(function (result, status, jqxhr) {
+          $('.status_value').text(result.errors ? JSON.stringify(result.errors) : status);
+        });
+        var info = $('<div class="uploaded_info"/>');
+        $(info).append($('<div class="data"/>').append(prettydump(data.result)));
+        $(info).append($('<div class="image"/>').append(
+           $.cloudinary.image(data.result.public_id, {
+           format: data.result.format, width: 150, height: 150, crop: "fill"
+           })
+        ));
+        $('.uploaded_info_holder').append(info);
+    });
+  });
 {% endblock %}

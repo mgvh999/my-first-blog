@@ -32,6 +32,7 @@ def get_env_variable(var_name):
 SECRET_KEY = get_env_variable('SECRET_KEY')
 
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
@@ -47,7 +48,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
     'blog',
+    'taggit',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,3 +117,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+#Cloudinary keys
+
+

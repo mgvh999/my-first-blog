@@ -1,35 +1,46 @@
-
+{% load cloudinary %}
 {% load staticfiles %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
 <!DOCTYPE html>
 
 <html>
     <head>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        {% cloudinary_includes %}
+        {% cloudinary_js_config %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/blog.css' %}" rel="stylesheet">
         <style>
             body {
                 background:url('http://www.vectordiary.com/wp-content/uploads/2013/12/geo-seamless-pattern.jpg');
 
             }
         </style>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        <link href="{% static 'css/blog.css' %}" rel="stylesheet">
-        <title> Animales Siendo Pesaos</title>
+        <title> Home</title>
+        <script>
+            {% block javascript %}{% endblock %}
+        </script>
     </head>
     <body>
     <div class="page-header">
         {% if user.is_authenticated %}
+            <a href ="{% url 'post_new_image' %}" class="top-menu"><span class="glyphicon glyphicon-camera"></span></a>
             <a href ="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <a href "{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphocon-edit"></span></a>
+            <a href = "{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphocon-edit"></span></a>
+            
         {% endif %}
-        <h1><a href="/">Animales Siendo pesaos</a></h1>
+        <h1><a href="/">Home</a></h1>
     </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
+        <div class="container">
+            <div class="content">
+                
                     {% block content %}
                     {% endblock %}
-                </div>
+                
             </div>
         </div>
     </body>
