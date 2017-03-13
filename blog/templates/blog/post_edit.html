@@ -6,9 +6,8 @@
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
     {% if post.image %}
-        <a href="{% url 'post_detail' pk=post.pk+1 %}">
-            {% load cloudinary %}
-            {% cloudinary post.image.public_id %}
-        </a>
+    
+        {% load cloudinary %}
+        {% cloudinary post.image.public_id %}
     {% endif %}
 {% endblock %}

@@ -17,7 +17,7 @@ from cloudinary import api # Only required for creating upload presets on the fl
 
 def post_list(request):
     post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    paginator = Paginator(post_list, 5)
+    paginator = Paginator(post_list, 10)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -36,7 +36,7 @@ def post_detail(request, pk):
 
     this_index = post_list_values.index(post.pk)
     next_index = this_index+1
-    next_pk=post_list_values[next_index]
+    next_pk = post_list_values[next_index]
     previous_index = this_index-1
     if previous_index <= -1 :
         previous_pk = None

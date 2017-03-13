@@ -4,6 +4,10 @@ h1 a {
     font-family: 'Lobster'
 }
 
+h1{
+    font-size:25px;
+}
+
 * {
 
     box-sizing: border-box;
@@ -28,10 +32,6 @@ img{
     font-size: 36pt;
     text-decoration: none;
 }
-@media (max-width: 480px)
-.container {
-    display: inline-block;
-}
 
 .container {
     width:100%;
@@ -41,15 +41,36 @@ img{
 
 }
 
-@media (max-width: 480px)
-.container .content {
-    padding-top:1rem;
-}
-
 .container .content {
     padding:1.5rem 0 0;
     margin:0;
     width: auto;
+}
+
+@media (max-width: 480px){
+.container {
+    display: inline-block;
+    }
+}
+
+@media (max-width: 768px){
+    .container{
+        padding:0 .4rem;
+    }
+}
+
+
+
+@media (max-width: 480px){
+    .container .content {
+        padding-top:1rem;
+    }
+}
+@media (max-width: 768px) and (orientation: portrait){
+    .container{
+        padding:0 1.5rem;
+        max-width: 768px;
+    }
 }
 h1, h2, h3, h4 {
     font-family: 'Lobster', cursive;
@@ -57,6 +78,7 @@ h1, h2, h3, h4 {
 
 .date {
     color: #828282;
+    font-size:20px;
 }
 
 .save {
@@ -72,17 +94,29 @@ h1, h2, h3, h4 {
     width:100%;
 }
 
-@media (max-width: 480px)
-#posts .post {
-    padding-bottom:1rem;
-}
 
 #posts .post {
     padding-bottom:4rem;
     position:relative;
     overflow-x:hidden;/* research this */
 }
+@media (min-width: 940px){
+    #posts {
+        width:66%;
+    }   
+}
 
+@media (min-width: 815px){
+    #posts {
+        width:63%;
+    }
+}
+
+@media (min-width: 768px){
+    #posts{
+        width:59%;
+    }
+}
 .post{
     padding:8px;
     overflow:hidden;
@@ -103,6 +137,14 @@ h1, h2, h3, h4 {
     width:100%;
     height:auto;
 }
+
+@media (max-width: 480px){
+    #posts .post {
+        padding-bottom:1rem;
+    }
+}
+
+
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
     float: right;
@@ -150,3 +192,31 @@ div > img {
     border: 1px solid #ccc;
 }
 
+
+
+#sidebar {
+    z-index:8888;
+    width:300px;
+    display: none;
+    float:right;
+    position:relative;
+    margin-top:35px;
+}
+
+
+#sidebar a {
+    display:inline-block;
+    text-decoration: none;
+}
+
+#sidebar a img{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+@media (min-width: 768px){
+    #sidebar {
+        display:block;
+    }
+}

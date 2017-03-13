@@ -14,8 +14,10 @@
                             {% load cloudinary %}
                             {% cloudinary post.image.public_id %}
                         </a>
-                    </div>
+                    </p>
+                    
                 {% endif %}
+            
                 
                 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <p>{{ post.text|linebreaksbr }}</p>
@@ -36,5 +38,11 @@
                         
                 </span>
         </div>
+    </div>
 
+    <div id="sidebar">
+        <a href="">
+            <img src="http://fpoimg.com/300x250">
+        </a>
+    </div>
 {% endblock %}
