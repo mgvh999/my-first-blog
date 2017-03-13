@@ -14,5 +14,16 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|truncatechars:200 }}</p>
+        {% if post.image %}
+            <a href="{% url 'post_detail' pk=next_pk %}">
+                {% load cloudinary %}
+                {% cloudinary post.image.public_id %}
+            </a>
+        {% endif %}
+        {% if previous_pk %}
+            <a href="{% url 'post_detail' pk=previous_pk %}">Previous</a>
+        {% endif %}
+            <a href="{% url 'post_detail' pk=next_pk %}">Next</a>
+        
     </div>
 {% endblock %}

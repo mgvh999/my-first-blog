@@ -5,5 +5,10 @@
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
-    <!-- To-do: add a cloudinary thumbnail, but make it so the image cannot be changed -->
+    {% if post.image %}
+        <a href="{% url 'post_detail' pk=post.pk+1 %}">
+            {% load cloudinary %}
+            {% cloudinary post.image.public_id %}
+        </a>
+    {% endif %}
 {% endblock %}

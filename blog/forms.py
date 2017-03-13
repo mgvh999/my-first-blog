@@ -11,7 +11,13 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'text')
 
 class PostPhotoDirectForm(PostForm):
-    image = CloudinaryJsFileField()
+    image = CloudinaryJsFileField(
+            attrs = { 'style': "margin-top: 30px" }, 
+            options = { 
+              'tags': "directly_uploaded",
+              'crop': 'limit', 'width': 500, 'height': 500},
+            required=False
+              )
 
 class PhotoUnsignedDirectForm(PostForm):
     upload_preset_name = "sample_" + hashlib.sha1(to_bytes(cloudinary.config().api_key + cloudinary.config().api_secret)).hexdigest()[0:10]

@@ -17,5 +17,5 @@ class PostEditTest(TestCase):
         post = Post.objects.create(author_id=user.id, title='pepe',text="pepe frog", image="test_files/pepe.jpg")
         request = HttpRequest()
         response = post_edit(request, pk=post.pk)
-        self.assertIn('Image ', response.content.decode())
+        self.assertIn("<img", response.content.decode())
 

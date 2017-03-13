@@ -10,7 +10,10 @@
                 
                 {% if post.image %}
                     <p class="hasImg">
-                        <img src="{{ post.image.url }}">
+                        <a href="{% url 'post_detail' pk=post.pk %}">
+                            {% load cloudinary %}
+                            {% cloudinary post.image.public_id %}
+                        </a>
                     </div>
                 {% endif %}
                 
@@ -26,9 +29,12 @@
 
                         <span class="current">
                                 Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-
+                        </span>
                         {% if posts.has_next %}
                             <a href="?page={{ posts.next_page_number }}">next</a>
                         {% endif %}
+                        
+                </span>
+        </div>
 
 {% endblock %}

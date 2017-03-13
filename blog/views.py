@@ -30,7 +30,21 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request,'blog/post_detail.html', {'post': post})
+    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+    post_list_values=post_list.values_list('pk', flat=True)
+    post_list_values=list(post_list_values)
+
+    this_index = post_list_values.index(post.pk)
+    next_index = this_index+1
+    next_pk=post_list_values[next_index]
+    previous_index = this_index-1
+    if previous_index <= -1 :
+        previous_pk = None
+    else:
+        previous_pk = post_list_values[previous_index]
+
+    
+    return render(request,'blog/post_detail.html', {'post': post, 'next_pk': next_pk, 'previous_pk':previous_pk})
 
 
 def post_new(request):
@@ -122,3 +136,25 @@ def post_new_image(request):
 
 
 
+
+
+########Helper Functions#########
+class hn_wrapper(object):
+    def __init__(self, it):
+        self.it = iter(it)
+        self._hasnext = None
+    def __iter__(self): return self
+    def next(self):
+        if self._hasnext:
+            result = self._thenext
+        else:
+            result = next(self.it)
+        self._hasnext = None
+        return result
+    def hasnext(self):
+        if self._hasnext is None:
+            try:self._thenext = next(self.it)
+            except StopIteration:
+                self._hasnext = False
+            else: self.hasnext = True
+        return self._hasnext

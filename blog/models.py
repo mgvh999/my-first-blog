@@ -12,7 +12,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     #image = models.ImageField(upload_to='images/%Y/%m/%d', blank=True, null=True)
     url = models.URLField(null=True, blank=True)
-    image = CloudinaryField('image', null=True, blank=True)
+    image = CloudinaryField('image', blank=True, null=True)
 
     tags = TaggableManager()
 
