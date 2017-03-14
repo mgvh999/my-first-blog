@@ -21,6 +21,10 @@ img{
     border:0;
 }
 
+p{
+    margin:0px;
+}
+
 .page-header {
     background-color: #ff9400;
     margin-top: 0;
@@ -78,7 +82,7 @@ h1, h2, h3, h4 {
 
 .date {
     color: #828282;
-    font-size:20px;
+    font-size:15px;
 }
 
 .save {
@@ -138,9 +142,62 @@ h1, h2, h3, h4 {
     height:auto;
 }
 
+
+
 @media (max-width: 480px){
     #posts .post {
         padding-bottom:1rem;
+    }
+}
+
+
+#post-detail{
+    padding:8px;
+    overflow:hidden;
+    float:left;
+}
+#post-detail p {
+    padding:0 .5rem;
+    margin:1.1rem 0;
+    font-size:.9rem;
+    line-height:1.333em;
+    color:#222;
+
+}
+#post-detail p.hasImg {
+    padding:0;
+    margin:0;
+}
+
+#post-detail img {
+    width:100%;
+    height:auto;
+}
+
+#post-detail #next-selector{
+    opacity:70%;
+    float:right;
+    height:100%;
+    
+}
+#post-detail > #leftselector{
+    float:right;
+}
+@media (min-width: 940px){
+    #post-detail {
+        width:66%;
+    }   
+}
+
+@media (min-width: 815px){
+    #post-detail{
+        width:63%;
+    }
+}
+
+@media (min-width: 768px){
+    #post-detail{
+        width:59%;
     }
 }
 
@@ -151,6 +208,8 @@ h1, h2, h3, h4 {
     font-size: 26pt;
     margin-right: 20px;
 }
+
+
 /*
 .post {
     margin-bottom: 70px;
@@ -200,7 +259,7 @@ div > img {
     display: none;
     float:right;
     position:relative;
-    margin-top:35px;
+    margin-top:29px;
 }
 
 

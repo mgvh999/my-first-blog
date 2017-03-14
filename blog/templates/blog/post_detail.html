@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="post">
+    <div id="post-detail">
         {% if post.published_date %}
             <div class='date'>
                 {{ post.published_date|date:'d-m-Y'  }}
@@ -14,16 +14,33 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|truncatechars:200 }}</p>
-        {% if post.image %}
-            <a href="{% url 'post_detail' pk=next_pk %}">
-                {% load cloudinary %}
-                {% cloudinary post.image.public_id %}
-            </a>
+        {% if post.published_date %}
+            {% if post.image %}
+                <a href="{% url 'post_detail' pk=next_pk %}">
+                    {% load cloudinary %}
+                    {% cloudinary post.image.public_id %}
+                </a>
+            {% endif %}
+            {% if previous_pk %}
+                <a id="previous-selector" href="{% url 'post_detail' pk=previous_pk %}">Previous</a>
+            {% endif %}
+                <a id="next-selector" href="{% url 'post_detail' pk=next_pk %}">Next</a>
+            {% else %}
+                {% if post.image %}                
+                    {% load cloudinary %}
+                    {% cloudinary post.image.public_id %}
+                {% endif %}
         {% endif %}
-        {% if previous_pk %}
-            <a href="{% url 'post_detail' pk=previous_pk %}">Previous</a>
-        {% endif %}
-            <a href="{% url 'post_detail' pk=next_pk %}">Next</a>
         
     </div>
+    <div id="sidebar">
+        <a href="">
+            <img src="http://fpoimg.com/300x250">
+        </a>
+    </div>
+{% endblock %}
+{% block javascript %}
+    $("img").on("mouseover", function(){
+        
+    });
 {% endblock %}

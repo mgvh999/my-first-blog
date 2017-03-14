@@ -30,22 +30,24 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-    post_list_values=post_list.values_list('pk', flat=True)
-    post_list_values=list(post_list_values)
+    if post.published_date:
+        post_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+        post_list_values=post_list.values_list('pk', flat=True)
+        post_list_values=list(post_list_values)
 
-    this_index = post_list_values.index(post.pk)
-    next_index = this_index+1
-    next_pk = post_list_values[next_index]
-    previous_index = this_index-1
-    if previous_index <= -1 :
-        previous_pk = None
+        this_index = post_list_values.index(post.pk)
+        next_index = this_index+1
+        next_pk = post_list_values[next_index]
+        previous_index = this_index-1
+        if previous_index <= -1 :
+            previous_pk = None
+        else:
+            previous_pk = post_list_values[previous_index]
+
+        return render(request,'blog/post_detail.html', {'post': post, 'next_pk': next_pk, 'previous_pk':previous_pk})
     else:
-        previous_pk = post_list_values[previous_index]
-
+        return render(request, 'blog/post_detail.html', {'post': post})
     
-    return render(request,'blog/post_detail.html', {'post': post, 'next_pk': next_pk, 'previous_pk':previous_pk})
-
 
 def post_new(request):
     #direct_form = PostPhotoDirectForm()
@@ -78,7 +80,7 @@ def post_edit(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request,'blog/post_edit.html',{'form': form } )
+    return render(request,'blog/post_edit.html',{'form': form, 'post':post} )
 
 #def post_new(request):
     #context = dict(direct_form = PostPhotoDirectForm())
