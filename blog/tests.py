@@ -19,3 +19,4 @@ class PostEditTest(TestCase):
         response = post_edit(request, pk=post.pk)
         self.assertIn("<img", response.content.decode())
 
+0

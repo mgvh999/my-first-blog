@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+{% load cloudinary %}
 {% block content %}
     <div id='posts'>
         {% for post in posts %}
@@ -10,18 +10,31 @@
                 
                 {% if post.image %}
                     <p class="hasImg">
-                        <a href="{% url 'post_detail' pk=post.pk %}">
-                            {% load cloudinary %}
+                        <a href="{{ post.get_absolute_url }}">
+                            
                             {% cloudinary post.image.public_id %}
                         </a>
                     </p>
                     
                 {% endif %}
-            
                 
                 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <p>{{ post.text|linebreaksbr }}</p>
             </div>
+            <div id="shareBtn{{ post.pk }}" class="btn btn-success clearfix">Share</div>
+            <meta property="og:title" content="{{ post.title }}">
+            <script>
+                    document.getElementById('shareBtn{{ post.pk }}').onclick = function() {
+                    
+                    FB.ui({
+                        method: 'share',
+                        display: 'popup',
+                        href: 'http://mysite.com:8000{{ post.get_absolute_url }}',
+                        title: '{{ post.title }}',
+                        picture: '{{ post.image.url }}'
+                      }, function(response){});
+                    }
+            </script>
         {% endfor %}
         <div class="pagination">
                 <span class="step-links">

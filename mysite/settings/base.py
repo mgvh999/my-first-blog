@@ -39,18 +39,30 @@ SECRET_KEY = get_env_variable('SECRET_KEY')
 ALLOWED_HOSTS = ['mgvh999.pythonanywhere.com']
 
 
-# Application definition
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.sites',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cloudinary',
     'blog',
     'taggit',
+    
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.instagram',
+    'allauth.socialaccount.providers.twitter',
 
 )
 
@@ -120,4 +132,15 @@ MEDIA_URL = '/media/'
 
 #Cloudinary keys
 
+SITE_ID = 1
 
+#AUTH AND ALLAUTH SETTINGS
+LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE' : ['email', 'publish_actions'],
+        'METHOD': 'js_sdk'
+
+    }
+}

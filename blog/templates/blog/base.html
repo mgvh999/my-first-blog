@@ -20,12 +20,36 @@
 
             }
         </style>
-        <title> Home</title>
         <script>
             {% block javascript %}{% endblock %}
         </script>
+        <div id="fb-root"></div>
+        
+        {% block fb_meta %}
+        {% endblock %}
+        <title> Home</title>
+        
+
     </head>
     <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '263389540714805',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
     <div class="page-header">
         {% if user.is_authenticated %}
             <a href ="{% url 'post_new_image' %}" class="top-menu"><span class="glyphicon glyphicon-camera"></span></a>
@@ -43,7 +67,9 @@
                 
             </div>
         </div>
-    </body>
-        
+
+  
+
+
     </body>
 </html>

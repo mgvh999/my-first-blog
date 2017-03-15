@@ -8,15 +8,29 @@
             <button type="submit" class="save btn btn-default" value="Upload">Save</button>
         </form>
     
-        <div class="uploader_info_holder">
+        <div class="status">
+            <h2>Status</h2>
+            <span class="status_value">Esperando</span>
         </div>
     </div>
+    
     
 {% endblock %}
 {% block javascript %}
     $(function () {
-        $('#direct_upload input[type="file"]').cloudinary_fileupload(
-            { dropZone: '#direct_upload'})
+        $('#direct_upload input[type="file"]').cloudinary_fileupload({
+             dropZone: '#direct_upload',
+             start: function () {
+                $(".status_value").text("Comenzando subida directa...");
+            },
+            progress: function () {
+                $(".status_value").text('Subiendo...');
+            },
+        })
+        .on('cloudinarydone', function(e, data) {
+            $(".status_value").text("Listo!");
+
+        });
     });
   
 {% endblock %}

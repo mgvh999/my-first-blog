@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('blog.urls')),
+    url(r'^accounts/', include('allauth.urls')),
     #url(r'^hello/$', hello),
     #url(r'^time/$', current_datetime),
     #url(r'^time/plus/(\d{1,2})/$', hours_ahead),

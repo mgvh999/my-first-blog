@@ -8,3 +8,4 @@ pytz==2016.10
 six==1.10.0
 sorl-thumbnail==12.3
 cloudinary==1.6.0
+django-allauth==0.31.0

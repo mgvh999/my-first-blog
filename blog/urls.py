@@ -14,5 +14,5 @@ urlpatterns = [
     url(r'^post/publish/(?P<pk>\d+)/$', views.post_publish, name='post_publish'),
     url(r'^upload/complete/$', views.direct_upload_complete),
     url(r'^post/new/image/$', views.post_new_image, name='post_new_image')
-
+    
 ]
