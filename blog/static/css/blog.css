@@ -1,17 +1,27 @@
-
-h1 a {
-    color:#FCA205;
-    font-family: 'Lobster'
-}
-
-h1{
-    font-size:25px;
-}
-
 * {
 
     box-sizing: border-box;
 }
+
+
+h1, h3, h4 {
+    font-family: 'Lobster', cursive;
+}
+
+h1 a {
+    color:#FCA205;
+    font-family: 'Lobster';
+}
+
+
+h2{
+    font-family: KlavikaBold;
+}
+h1{
+    font-size:25px;
+}
+
+
 
 div{
     display:block;
@@ -76,9 +86,7 @@ p{
         max-width: 768px;
     }
 }
-h1, h2, h3, h4 {
-    font-family: 'Lobster', cursive;
-}
+
 
 .date {
     color: #828282;
@@ -125,14 +133,14 @@ h1, h2, h3, h4 {
     padding:8px;
     overflow:hidden;
 }
-.post p {
+.post div {
     padding:0 .5rem;
     margin:1.1rem 0;
     font-size:.9rem;
     line-height:1.333em;
     color:#222;
 }
-.post p.hasImg {
+.post div.hasImg {
     padding:0;
     margin:0;
 }
@@ -208,8 +216,44 @@ h1, h2, h3, h4 {
     font-size: 26pt;
     margin-right: 20px;
 }
+.post h1 a:visited{
+    color:#6f5fff;
+    text-decoration: underline;
+}
+
+.post div.social_media{
+
+    background-color: white;
+    width:50%;
+    height:5%;
+    padding:0px;
+    margin:0px;
+    font-size:14px;
+    line-height:1.42857143;
+    
 
 
+}
+
+.post div.facebook_share_button{
+    
+    width:25px;
+    height:25px;
+    padding:0px;
+    margin-top:4px;
+    margin-left:10px;
+    font-size:14px;
+    line-height:normal;
+    background: url(../logos/facebook.png);
+    background-size: 25px;
+    display:inline-block;
+}
+
+@media (max-width:500px){
+    .post div.social_media{
+        display:none;
+    }
+}
 /*
 .post {
     margin-bottom: 70px;
@@ -279,3 +323,5 @@ div > img {
         display:block;
     }
 }
+
+

@@ -9,32 +9,36 @@
             <div class="post">
                 
                 {% if post.image %}
-                    <p class="hasImg">
+                    <div class="hasImg">
                         <a href="{{ post.get_absolute_url }}">
                             
                             {% cloudinary post.image.public_id %}
                         </a>
-                    </p>
+                    </div>
                     
                 {% endif %}
                 
                 <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <p>{{ post.text|linebreaksbr }}</p>
+                <div class="social_media">
+                    <div id="facebook_share{{ post.pk }}" class="facebook_share_button"></div>
+                    <div id="twitter_share"></div>
+                    <div id="instagram_share"></div>
+                    <div id="tumblr_share"></div>
+                </div>    
+                    <script>
+                            document.getElementById('facebook_share{{ post.pk }}').onclick = function() {
+                            
+                            FB.ui({
+                                method: 'share',
+                                display: 'popup',
+                                href: 'http://mysite.com:8000{{ post.get_absolute_url }}',
+                                title: '{{ post.title }}',
+                                picture: '{{ post.image.url }}'
+                              }, function(response){});
+                            }
+                    </script>
             </div>
-            <div id="shareBtn{{ post.pk }}" class="btn btn-success clearfix">Share</div>
-            <meta property="og:title" content="{{ post.title }}">
-            <script>
-                    document.getElementById('shareBtn{{ post.pk }}').onclick = function() {
-                    
-                    FB.ui({
-                        method: 'share',
-                        display: 'popup',
-                        href: 'http://mysite.com:8000{{ post.get_absolute_url }}',
-                        title: '{{ post.title }}',
-                        picture: '{{ post.image.url }}'
-                      }, function(response){});
-                    }
-            </script>
         {% endfor %}
         <div class="pagination">
                 <span class="step-links">
