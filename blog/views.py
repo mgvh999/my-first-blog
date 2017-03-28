@@ -4,7 +4,7 @@ from django.utils import timezone
 from .forms import PostForm, PostPhotoDirectForm, PhotoUnsignedDirectForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
-
+import cloudinary
 from django.http import HttpResponse, HttpResponseRedirect
 
 from django.views.decorators.csrf import csrf_exempt

@@ -224,12 +224,13 @@ p{
 .post div.social_media{
 
     background-color: white;
-    width:50%;
-    height:5%;
+    width:137px;
+    height:32px;
     padding:0px;
     margin:0px;
     font-size:14px;
-    line-height:1.42857143;
+    line-height:normal;
+
     
 
 
@@ -241,13 +242,59 @@ p{
     height:25px;
     padding:0px;
     margin-top:4px;
-    margin-left:10px;
-    font-size:14px;
+    margin-left:5px;
     line-height:normal;
     background: url(../logos/facebook.png);
     background-size: 25px;
     display:inline-block;
 }
+
+.post div.twitter_share_button{
+    
+    width:25px;
+    height:25px;
+    padding:0px;
+    margin-top:4px;
+    margin-left:5px;
+    font-size:14px;
+    line-height:normal;
+    background: url(../logos/twitter.png);
+    background-size: 25px;
+    display:inline-block;
+}
+
+.post div.twitter_share_button a{
+    width:100%;
+    height:100%;
+}
+
+.post div.instagram_share_button{
+    
+    width:25px;
+    height:25px;
+    padding:0px;
+    margin-top:4px;
+    margin-left:5px;
+    font-size:14px;
+    line-height:normal;
+    background: url(../logos/instagram.png);
+    background-size: 25px;
+    display:inline-block;
+}
+.post div.tumblr_share_button{
+    
+    width:25px;
+    height:25px;
+    padding:0px;
+    margin-top:4px;
+    margin-left:5px;
+    font-size:14px;
+    line-height:normal;
+    background: url(../logos/tumblr.png);
+    background-size: 25px;
+    display:inline-block;
+}
+
 
 @media (max-width:500px){
     .post div.social_media{

@@ -1,8 +1,13 @@
 {% extends 'blog/base.html' %}
 {% load cloudinary %}
 {% block content %}
+   {% block meta %}
+                {{ block.super }}                 
+                     <link href="/static/css/testing" rel="stylesheet">                     
+    {% endblock %}
     <div id='posts'>
         {% for post in posts %}
+            
             <div class="date">
                     <p>published: {{ post.published_date }}</p>
             </div>
@@ -22,9 +27,12 @@
                 <p>{{ post.text|linebreaksbr }}</p>
                 <div class="social_media">
                     <div id="facebook_share{{ post.pk }}" class="facebook_share_button"></div>
-                    <div id="twitter_share"></div>
-                    <div id="instagram_share"></div>
-                    <div id="tumblr_share"></div>
+                    <a href="https://twitter.com/intent/tweet?text={{ post.image.url }}">
+                        <div id="twitter_share" class="twitter_share_button"></div>
+                    </a>
+                    <a href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=http://mysite.com:8000{{ post.get_absolute_url }}&posttype=photo&content={{ post.image.url }}" data-content="{{ post.image.url }}" data-posttype="photo" data-caption="{{ post.title }}">
+                        <div id="tumblr_share" class="tumblr_share_button"></div>
+                    </a>
                 </div>    
                     <script>
                             document.getElementById('facebook_share{{ post.pk }}').onclick = function() {
@@ -39,6 +47,7 @@
                             }
                     </script>
             </div>
+
         {% endfor %}
         <div class="pagination">
                 <span class="step-links">

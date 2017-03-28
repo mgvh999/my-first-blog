@@ -26,13 +26,14 @@
             {% block javascript %}{% endblock %}
         </script>
         <div id="fb-root"></div>
-        
+        {% block meta %}
+        {% endblock %}
         {% block fb_meta %}
         {% endblock %}
         <title> Home</title>
         
         
-
+        <meta property="twitter:image" content="http://res.cloudinary.com/dpbr0o4cw/image/upload/pfar2iiuzwar1jbd6p2b">
     </head>
     <body>
     <script>
@@ -73,6 +74,6 @@
 
   
 
-
+    <script id="tumblr-js" async src="https://assets.tumblr.com/share-button.js"></script>
     </body>
 </html>
