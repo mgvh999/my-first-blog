@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
-from taggit.managers import TaggableManager
+
 from cloudinary.models import CloudinaryField
 from django.core.urlresolvers import reverse
 import json
@@ -17,7 +17,7 @@ class Post(models.Model):
     image = CloudinaryField('image', blank=True, null=True)
     video_url = models.URLField(null=True, blank=True)
     
-    tags = TaggableManager()
+    
 
     def publish(self):
         self.published_date = timezone.now()
