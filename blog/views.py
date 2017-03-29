@@ -37,7 +37,16 @@ def post_detail(request, pk):
 
         this_index = post_list_values.index(post.pk)
         next_index = this_index+1
-        next_pk = post_list_values[next_index]
+        try:
+            post_list_values[next_index]
+        except IndexError:
+             next_index = None
+
+        if next_index:
+            next_pk = post_list_values[next_index]
+        else:
+            next_pk = None
+        
         previous_index = this_index-1
         if previous_index <= -1 :
             previous_pk = None

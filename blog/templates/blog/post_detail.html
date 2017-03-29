@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+{% load cloudinary %}
 {% block content %}
     <div id="post-detail">
         {% if post.published_date %}
@@ -16,20 +16,26 @@
         <p>{{ post.text|truncatechars:200 }}</p>
         {% if post.published_date %}
             {% if post.image %}
-                <a href="{% url 'post_detail' pk=next_pk %}">
-                    {% load cloudinary %}
+                {% if next_pk %}
+                    <a href="{% url 'post_detail' pk=next_pk %}">
+                        
+                        {% cloudinary post.image.public_id %}
+                    </a>
+                {% else %}
                     {% cloudinary post.image.public_id %}
-                </a>
+                {% endif %}
             {% endif %}
             {% if previous_pk %}
                 <a id="previous-selector" href="{% url 'post_detail' pk=previous_pk %}">Previous</a>
             {% endif %}
+            {% if next_pk %}
                 <a id="next-selector" href="{% url 'post_detail' pk=next_pk %}">Next</a>
-            {% else %}
-                {% if post.image %}                
-                    {% load cloudinary %}
-                    {% cloudinary post.image.public_id %}
-                {% endif %}
+            {% endif %}
+        {% else %}
+            {% if post.image %}                
+                {% load cloudinary %}
+                {% cloudinary post.image.public_id %}
+            {% endif %}
         {% endif %}
         
     </div>
