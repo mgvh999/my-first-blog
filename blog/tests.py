@@ -19,4 +19,9 @@ class PostEditTest(TestCase):
         response = post_edit(request, pk=post.pk)
         self.assertIn("<img", response.content.decode())
 
-0
+
+class AllauthTest(TestCase):
+
+    def test_extends_base_template(self):
+        response = self.client.get('/accounts/login/')
+        self.assertTemplateUsed(response, 'account/login.html')

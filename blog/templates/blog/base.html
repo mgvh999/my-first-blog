@@ -59,8 +59,11 @@
             <a href ="{% url 'post_new_image' %}" class="top-menu"><span class="glyphicon glyphicon-camera"></span></a>
             <a href ="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             <a href = "{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphocon-edit"></span></a>
-            
+            <a href = "{% url 'account_logout' %}">Logout</a>
+        {% else %}
+            <a href = "{% url 'account_login' %}">Login</a>
         {% endif %}
+
         <h1><a href="/">Home</a></h1>
     </div>
         <div class="container">

@@ -16,6 +16,7 @@ import os
 current_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.join(current_directory, os.path.pardir)
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -61,11 +62,11 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.instagram',
-    'allauth.socialaccount.providers.twitter',
+    
 
 )
+
+PROJECT_DIR = os.path.dirname(__file__)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -83,7 +84,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR + 'blog/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,6 +98,12 @@ TEMPLATES = [
         },
     },
 ]
+
+#TEMPLATE_DIRS = (
+    #os.path.join(BASE_DIR, 'blog/templates/'),
+#)
+
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
